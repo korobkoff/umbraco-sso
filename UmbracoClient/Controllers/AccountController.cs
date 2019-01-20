@@ -57,7 +57,7 @@ namespace UmbracoClient.Controllers
             // Get the relevant claims from the external identity
             var email = loginInfo.ExternalIdentity.Claims.First(c => c.Type == JwtClaimTypes.Email).Value;
             var name = loginInfo.ExternalIdentity.Claims.First(c => c.Type == JwtClaimTypes.Name).Value;
-            //var role = loginInfo.ExternalIdentity.Claims.First(c => c.Type == JwtClaimTypes.Role).Value;
+            var role = loginInfo.ExternalIdentity.Claims.First(c => c.Type == JwtClaimTypes.Role).Value;
 
             // Sign out externally
             HttpContext.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
@@ -67,7 +67,7 @@ namespace UmbracoClient.Controllers
             {
                 new Claim(JwtClaimTypes.Email, email),
                 new Claim(JwtClaimTypes.Name, name),
-                //new Claim(JwtClaimTypes.Role, role),
+                new Claim(JwtClaimTypes.Role, role),
             };
 
             var id = new ClaimsIdentity(DefaultAuthenticationTypes.ApplicationCookie, JwtClaimTypes.Email, JwtClaimTypes.Role);

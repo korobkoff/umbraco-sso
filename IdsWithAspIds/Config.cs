@@ -16,11 +16,18 @@ namespace IdsWithAspIds
         // scopes define the resources in your system
         public static IEnumerable<IdentityResource> GetIdentityResources()
         {
+            var customProfile = new IdentityResource(
+                name: "application.profile",
+                displayName: "Application profile",
+                claimTypes: new[] { JwtClaimTypes.Email, JwtClaimTypes.GivenName, JwtClaimTypes.FamilyName}
+            );
+
             return new List<IdentityResource>
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
                 new IdentityResources.Email(),
+                customProfile,
                 new IdentityResource("roles", new string[] { JwtClaimTypes.Role })
             };
         }
@@ -148,7 +155,7 @@ namespace IdsWithAspIds
             {
                 new TestUser
                 {
-                    SubjectId = "1",
+                    SubjectId = "121212",
                     Username = "test",
                     Password = "password",
                     Claims = new List<Claim> {

@@ -18,6 +18,7 @@ using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Extensions.PlatformAbstractions;
 using IdsWithAspIds.Areas.Identity.Data;
+using IdentityServer4.Services;
 
 namespace IdsWithAspIds
 {
@@ -77,9 +78,10 @@ namespace IdsWithAspIds
             .AddInMemoryApiResources(Config.GetApiResources())
             .AddInMemoryClients(Config.GetClients())
             .AddAspNetIdentity<IdsWithAspIdsUser>()
+            .AddTestUsers(Config.GetUsers())
             .AddSigningCredential(cert);
             //builder.AddDeveloperSigningCredential();
-
+            services.AddTransient<IProfileService, ProfileService>();
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddMvc();
         }

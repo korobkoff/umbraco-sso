@@ -27,7 +27,10 @@ public static class AppBuilderExtensions
                 Scope = "openid profile email roles",
                 Notifications = new OpenIdConnectAuthenticationNotifications
                 {
+
+                    //SecurityTokenValidated = ClaimsTransformer.GenerateUserIdentityAsync
                     SecurityTokenValidated = async n =>
+
                     {
                         //Applies "claims transformation", as seen: https://identityserver.github.io/Documentation/docsv2/overview/mvcGettingStarted.html
                         //So that only the necessary claims are kept for the user's ticket
@@ -36,8 +39,8 @@ public static class AppBuilderExtensions
 
                         // we want to keep first name, last name, subject and roles
                         var email = id.FindFirst(JwtClaimTypes.Email);
-                        //var givenName = id.FindFirst(JwtClaimTypes.GivenName);
-                        //var familyName = id.FindFirst(JwtClaimTypes.FamilyName);
+                        var givenName = id.FindFirst(JwtClaimTypes.GivenName);
+                        var familyName = id.FindFirst(JwtClaimTypes.FamilyName);
                         var name = id.FindFirst(JwtClaimTypes.Name);
                         var sub = id.FindFirst(JwtClaimTypes.Subject);
                         var roles = id.FindAll(JwtClaimTypes.Role);
@@ -45,13 +48,14 @@ public static class AppBuilderExtensions
                         // create new identity and set name and role claim type
                         var nid = new ClaimsIdentity(
                             id.AuthenticationType,
-                            //JwtClaimTypes.GivenName,
-                            JwtClaimTypes.Email,
-                            JwtClaimTypes.Role);
+                            JwtClaimTypes.GivenName,
+                            //JwtClaimTypes.Email,
+                            JwtClaimTypes.Role
+                            );
 
                         nid.AddClaim(email);
-                        //nid.AddClaim(givenName);
-                        //nid.AddClaim(familyName);
+                        nid.AddClaim(givenName);
+                        nid.AddClaim(familyName);
                         nid.AddClaim(name);
                         nid.AddClaim(sub);
                         nid.AddClaims(roles);

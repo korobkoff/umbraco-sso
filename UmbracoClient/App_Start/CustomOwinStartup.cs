@@ -25,7 +25,7 @@ namespace UmbracoClient.App_Start
         /// <param name="app"/>
         protected override void ConfigureServices(IAppBuilder app)
         {
-            base.ConfigureServices(app);
+            base.ConfigureServices(app);    
 
         }
 

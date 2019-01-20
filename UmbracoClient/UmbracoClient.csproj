@@ -317,6 +317,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AppBuilderExtensions.cs" />
+    <Compile Include="App_Start\ClaimsTransformer.cs" />
     <Compile Include="App_Start\CustomOwinStartup.cs" />
     <Compile Include="App_Start\UmbracoIdentityStartup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
