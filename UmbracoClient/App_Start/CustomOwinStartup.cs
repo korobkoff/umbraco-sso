@@ -35,6 +35,7 @@ namespace UmbracoClient.App_Start
         /// <param name="app"/>
         protected override void ConfigureMiddleware(IAppBuilder app)
         {
+
             //Ensure owin is configured for Umbraco back office authentication. If you have any front-end OWIN
             // cookie configuration, this must be declared after it.
             app
@@ -47,6 +48,15 @@ namespace UmbracoClient.App_Start
                 Provider = new CookieAuthenticationProvider()
             });
 
+
+            var cookieOptions = new FrontEndCookieAuthenticationOptions
+            {
+                Provider = new CookieAuthenticationProvider(),
+            };
+
+            app.UseCookieAuthentication(cookieOptions, PipelineStage.Authenticate);
+
+
             JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
 
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
@@ -56,6 +66,7 @@ namespace UmbracoClient.App_Start
             //Lasty we need to ensure that the preview Middleware is registered, this must come after
             // all of the authentication middleware:
             app.UseUmbracoPreviewAuthentication(ApplicationContext, PipelineStage.Authorize);
+
 
         }
 

@@ -78,7 +78,6 @@ namespace IdsWithAspIds
             .AddInMemoryApiResources(Config.GetApiResources())
             .AddInMemoryClients(Config.GetClients())
             .AddAspNetIdentity<IdsWithAspIdsUser>()
-            .AddTestUsers(Config.GetUsers())
             .AddSigningCredential(cert);
             //builder.AddDeveloperSigningCredential();
             services.AddTransient<IProfileService, ProfileService>();

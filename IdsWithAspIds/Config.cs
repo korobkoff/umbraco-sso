@@ -19,7 +19,7 @@ namespace IdsWithAspIds
             var customProfile = new IdentityResource(
                 name: "application.profile",
                 displayName: "Application profile",
-                claimTypes: new[] { JwtClaimTypes.Email, JwtClaimTypes.GivenName, JwtClaimTypes.FamilyName}
+                claimTypes: new[] { JwtClaimTypes.Email, JwtClaimTypes.GivenName, JwtClaimTypes.FamilyName }
             );
 
             return new List<IdentityResource>
@@ -144,26 +144,6 @@ namespace IdsWithAspIds
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
                         "roles"
-                    }
-                }
-            };
-        }
-
-        public static List<TestUser> GetUsers()
-        {
-            return new List<TestUser>
-            {
-                new TestUser
-                {
-                    SubjectId = "121212",
-                    Username = "test",
-                    Password = "password",
-                    Claims = new List<Claim> {
-                        new Claim(JwtClaimTypes.Email, "test@test.com"),
-                        new Claim(JwtClaimTypes.GivenName, "Test"),
-                        new Claim(JwtClaimTypes.FamilyName, "User"),
-                        new Claim(JwtClaimTypes.Name, "Test User"),
-                        new Claim(JwtClaimTypes.Role, "Standard User"),
                     }
                 }
             };

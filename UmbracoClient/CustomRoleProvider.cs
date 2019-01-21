@@ -57,7 +57,7 @@ namespace UmbracoClient
         /// <returns>string array of portal security roles</returns>
         public override string[] GetAllRoles()
         {
-            return new[] { "Standard User" };
+            return new[] { "Standard user" };
         }
 
         /// <summary>

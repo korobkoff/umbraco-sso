@@ -29,6 +29,7 @@ public static class AppBuilderExtensions
                 {
 
                     //SecurityTokenValidated = ClaimsTransformer.GenerateUserIdentityAsync
+          
                     SecurityTokenValidated = async n =>
 
                     {
@@ -69,10 +70,13 @@ public static class AppBuilderExtensions
                         n.AuthenticationTicket = new AuthenticationTicket(
                             nid,
                             n.AuthenticationTicket.Properties);
+                        
+
 
 
                     }
                 }
+
             });
 
 

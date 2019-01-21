@@ -32,11 +32,19 @@ namespace IdsWithAspIds
 
             var claims = new List<Claim>
         {
-            new Claim(JwtClaimTypes.Email, "Email"),
-            new Claim(JwtClaimTypes.GivenName, "GivenName"),
-            new Claim(JwtClaimTypes.FamilyName, "FamilyName"),
-            new Claim(JwtClaimTypes.Name, "Name"),
-            new Claim(JwtClaimTypes.Role, "Standard User"),
+            new Claim(JwtClaimTypes.Email, user.Email),
+            new Claim(JwtClaimTypes.GivenName, user.GivenName),
+            new Claim(JwtClaimTypes.FamilyName, user.Surname),
+            new Claim(JwtClaimTypes.Name, user.GivenName),
+            //new Claim(JwtClaimTypes.Role, user.Role),
+
+                        //new Claim(JwtClaimTypes.Email, "test@test.com"),
+                        //new Claim(JwtClaimTypes.GivenName, "Test"),
+                        //new Claim(JwtClaimTypes.FamilyName, "User"),
+                        //new Claim(JwtClaimTypes.Name, "Test User"),
+                        new Claim(JwtClaimTypes.Role, "Standard User"),
+
+
             //new Claim("GivenName", user.GivenName),
             //new Claim("Surname", user.Surname),
             //new Claim("Email", user.Email)

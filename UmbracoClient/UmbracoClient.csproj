@@ -319,6 +319,9 @@
     <Compile Include="App_Start\AppBuilderExtensions.cs" />
     <Compile Include="App_Start\ClaimsTransformer.cs" />
     <Compile Include="App_Start\CustomOwinStartup.cs" />
+    <Compile Include="App_Start\FrontEndCookieAuthenticationOptions.cs" />
+    <Compile Include="App_Start\FrontEndCookieManager.cs" />
+    <Compile Include="App_Start\ReflectionHelper.cs" />
     <Compile Include="App_Start\UmbracoIdentityStartup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\UmbracoIdentityAccountController.cs" />
